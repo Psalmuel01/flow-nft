@@ -1,6 +1,6 @@
 # Fungible-Token-Project
 
-This repository contains a Flow blockchain project implementing a custom Fungible Token contract and related transactions and scripts. The project is divided into several parts, each addressing specific aspects of token management and interactions.
+This repository hosts a Flow blockchain project that incorporates a custom Fungible Token contract along with associated transactions and scripts. The project is structured into multiple segments, each addressing specific facets of token management and interactions.
 
 ## Part 1
 
@@ -14,33 +14,30 @@ The custom Fungible Token contract is implemented in the `FlowToken` contract. I
 
 ### Code Walk-Through
 
-The `deposit` function within the `Vault` resource zeroes out the balance of an incoming vault before destroying it. This ensures that the vault's tokens are transferred and prevents double counting. When the new vault is created, it holds the transferred tokens, preventing loss of tokens during the transition.
+Within the `Vault` resource, the `deposit` function resets the balance of an incoming vault before its destruction. This safeguards against double counting and ensures a seamless transfer of tokens to the new vault, preventing any loss during the transition.
 
 ## Part 2
 
 ### Transactions
 
-- **MINT:** Mint tokens to a recipient.
-- **SETUP:** Properly sets up a vault inside a user's account storage.
+- **MINT:** Mints tokens to a recipient.
+- **SETUP:** Sets up a vault inside a user's account storage.
 - **TRANSFER:** Allows a user to transfer tokens to a different address.
 
 ### Scripts
 
-- **READ BALANCE:** Reads the balance of a user's vault.
-- **SETUP CORRECTLY?:** Returns true if the user's vault is set up correctly and false if not.
-- **TOTAL SUPPLY:** Returns the total supply of tokens in existence.
+- **READ BALANCE:** Retrieves the balance of a user's vault.
+- **SETUP CORRECTLY?:** Verifies if a user's vault is correctly set up.
+- **TOTAL SUPPLY:** Displays the total supply of tokens in existence.
 
 ## Part 3
 
 ### Transactions and Scripts Modification
 
-- **SETUP:** Identifies and fixes poorly set up vaults.
-- **READ BALANCE:** Works with poorly set up vaults and temporarily fixes them to guarantee balance retrieval.
+Adjustments to existing transactions and scripts include:
 
-Guaranteeing balance retrieval involves:
-
-1. Using resource identifiers to ensure the correct token type.
-2. Using resource capabilities to validate the authenticity of the vault.
+- **SETUP**: Identifying and rectifying poorly set up vaults.
+- **READ BALANCE**: Works with poorly set up vaults temporarily to ensure balance retrieval, utilizing resource identifiers and capabilities for validation.
 
 ## Part 4
 
@@ -57,23 +54,14 @@ The `Admin` is granted the ability to withdraw tokens from a user's vault and de
 ### Scripts
 
 - **Balance Summary:** Returns the balance of the user's $FLOW vault and custom vault.
-- **Vault Overview:** Neatly returns information about all official Fungible Token vaults in the user's account storage.
+- **Vault Overview:** Returns information about all official Fungible Token vaults in the user's account storage.
 
 ## Part 6
 
 ### Swap Contract
 
-The `Swap` contract enables users to deposit $FLOW tokens and receive custom tokens in return, with the received amount based on the time since their last swap.
-
-### Swapping Functionality
-
-Two methods are implemented to ensure user identity:
-
-1. Using a custom identity resource to represent identity.
-2. Using a reference to the user's $FLOW vault to prove authenticity.
+The `Swap` contract facilitates users in depositing $FLOW tokens to receive custom tokens in return. The received amount is determined based on the time elapsed since their last swap.
 
 ## Conclusion
 
-This Flow Token project demonstrates the implementation of a custom Fungible Token contract and its various functionalities. The repository includes contracts, transactions, and scripts for managing tokens, setting up vaults, transferring tokens, and swapping tokens. The code and functionalities have been organized into distinct parts to make the project more understandable and manageable.
-
-For detailed usage and instructions, please refer to the individual code files and comments within the repository.
+This Flow Token project showcases how we've created a customized Fungible Token contract with various features. In the repository, you'll find clear contracts, transactions, and scripts for handling tokens, setting up vaults, transferring tokens, and swapping tokens. We've organized the project into different sections to make it easier to understand and manage.
